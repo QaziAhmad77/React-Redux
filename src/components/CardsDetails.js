@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Table } from "react-bootstrap/Table";
-import { useNavigate, useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { DLT, ADD, REMOVE } from "../redux/actions/action";
+import React, { useEffect, useState } from 'react';
+import { Table } from 'react-bootstrap/Table';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { DLT, ADD, REMOVE } from '../redux/actions/action';
 
 const CardsDetails = () => {
   const [data, setData] = useState([]);
@@ -22,7 +22,7 @@ const CardsDetails = () => {
   }, [id]);
   const dlt = (id) => {
     dispatch(DLT(id));
-    history("/");
+    history('/');
   };
   const remove = (item) => {
     dispatch(REMOVE(item));
@@ -60,12 +60,30 @@ const CardsDetails = () => {
                           <p>
                             <strong>Total</strong>: Rs {ele.price * ele.qnty}
                           </p>
-                          <div className="mt-5 d-flex justify-content-between align-items-center" style={{ width: 100, cursor: "pointer", background: "#ddd", color: "#111" }}>
-                            <span style={{ fontSize: 24 }} onClick={ele.qnty <= 1 ? () => dlt(ele.id) : () => remove(ele)}>
+                          <div
+                            className="mt-5 d-flex justify-content-between align-items-center"
+                            style={{
+                              width: 100,
+                              cursor: 'pointer',
+                              background: '#ddd',
+                              color: '#111',
+                            }}
+                          >
+                            <span
+                              style={{ fontSize: 24 }}
+                              onClick={
+                                ele.qnty <= 1
+                                  ? () => dlt(ele.id)
+                                  : () => remove(ele)
+                              }
+                            >
                               -
                             </span>
                             <span style={{ fontSize: 22 }}>{ele.qnty}</span>
-                            <span style={{ fontSize: 24 }} onClick={() => send(ele)}>
+                            <span
+                              style={{ fontSize: 24 }}
+                              onClick={() => send(ele)}
+                            >
                               +
                             </span>
                           </div>
@@ -73,7 +91,16 @@ const CardsDetails = () => {
                         <td>
                           <p>
                             <strong>Rating :</strong>
-                            <span style={{ backgroundColor: "green", color: "#fff", padding: "2px 5px", borderRadius: "5px" }}>{ele.rating} ⋆ </span>
+                            <span
+                              style={{
+                                backgroundColor: 'green',
+                                color: '#fff',
+                                padding: '2px 5px',
+                                borderRadius: '5px',
+                              }}
+                            >
+                              {ele.rating} ⋆{' '}
+                            </span>
                           </p>
                           <p>
                             <strong>Order Review :</strong>
@@ -82,8 +109,15 @@ const CardsDetails = () => {
                           <p>
                             <strong>Remove :</strong>
                             <span>
-                              {" "}
-                              <li className="fas fa-trash" onClick={() => dlt(ele.id)} style={{ color: "red", fontSize: "20px", cursor: "pointer" }}></li>{" "}
+                              <li
+                                className="fas fa-trash"
+                                onClick={() => dlt(ele.id)}
+                                style={{
+                                  color: 'red',
+                                  fontSize: '20px',
+                                  cursor: 'pointer',
+                                }}
+                              ></li>
                             </span>
                           </p>
                         </td>
